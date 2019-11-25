@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/11 | Hexo</title>
+  <title>yolov3-keras代码详解-train-py | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;11&#x2F;index.html">
+  <meta name="description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。这两个函数将检测类别和anchors储存在列表中 1234567891011def get_classes(classes_path):">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yolov3-keras代码详解-train-py">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。这两个函数将检测类别和anchors储存在列表中 1234567891011def get_classes(classes_path):">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-25T14:23:35.078Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -157,103 +160,177 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-yolov3-keras代码详解-train-py" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      yolov3-keras代码详解-train-py
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/" class="archive-article-date">
+
+        
+        <a href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/" class="archive-article-date">
   	<time datetime="2019-11-22T13:48:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/">yolov3-keras代码详解-train-py</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="在yolov3-keras中，train-py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model-py和untils-py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。"><a href="#在yolov3-keras中，train-py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model-py和untils-py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。" class="headerlink" title="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。"></a>在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，最后讲解主函数，先说说其他函数的作用。</h2><p>这两个函数将检测类别和anchors储存在列表中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def get_classes(classes_path):                     </span><br><span class="line">    with open(classes_path) as f:                   #用with open as打开classes这个文本</span><br><span class="line">        class_names = f.readlines()                 #读取classes的内容，其中classes的内容为检测的对象</span><br><span class="line">    class_names = [c.strip() for c in class_names]  #对classes链表进行操作，去掉空格部分</span><br><span class="line">    return class_names                              #得到检测对象储存在classes_names这个列表中，作为返回值。</span><br><span class="line"></span><br><span class="line">def get_anchors(anchors_path):</span><br><span class="line">    with open(anchors_path) as f:                       #用with open as打开anchors这个文本</span><br><span class="line">        anchors = f.readline()                          #读取anchors文本中的内容，其中anchors的内容为anchors的长和宽，在yolo中共有9个anchaors	</span><br><span class="line">    anchors = [float(x) for x in anchors.split(&apos;,&apos;)]    #将字符串转换成浮点型。</span><br><span class="line">    return np.array(anchors).reshape(-1, 2)             #把anchors转换成数组，列数为2，长和宽，并且作为返回值</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def create_model(input_shape, anchors, num_classes, load_pretrained=True, freeze_body=2,</span><br><span class="line">            weights_path=&apos;model_data/yolo_weights.h5&apos;):    #产生模型的函数，输入为图形的像素，anchors，检测目标的数量，以及权重文件</span><br><span class="line">    K.clear_session()                      #Keras中每次创建模型前都要clear下内存</span><br><span class="line">    image_input = Input(shape=(None, None, 3))    #创建图片的输入层，可以用（None，None，3），也可以（416，416，3）</span><br><span class="line">    h, w = input_shape                    #长宽尺寸</span><br><span class="line">    num_anchors = len(anchors)              #anchors的数量赋值给num_anchors，yolo中为9</span><br><span class="line"></span><br><span class="line">    y_true = [Input(shape=(h//&#123;0:32, 1:16, 2:8&#125;[l], w//&#123;0:32, 1:16, 2:8&#125;[l],\ </span><br><span class="line">        num_anchors//3, num_classes+5)) for l in range(3)]          #YOLO的三种grid，分别为13*13，26*26，52*52，每个grid中有3个anchors，检测类别数+边框4个+置信度1</span><br><span class="line"></span><br><span class="line">    model_body = yolo_body(image_input, num_anchors//3, num_classes)      #用model.py中的yolo_body函数创建模型</span><br><span class="line">    print(&apos;Create YOLOv3 model with &#123;&#125; anchors and &#123;&#125; classes.&apos;.format(num_anchors, num_classes))   #打印信息，共有几个anchors和几个检测类别</span><br><span class="line"></span><br><span class="line">    if load_pretrained:               #开始加载预训练值              </span><br><span class="line">        model_body.load_weights(weights_path, by_name=True, skip_mismatch=True) #Keras中读取h5文件的函数</span><br><span class="line">        print(&apos;Load weights &#123;&#125;.&apos;.format(weights_path))        # 打印信息，权重的路径</span><br><span class="line">        if freeze_body in [1, 2]:</span><br><span class="line">            # Freeze darknet53 body or freeze all but 3 output layers.</span><br><span class="line">            num = (185, len(model_body.layers)-3)[freeze_body-1]       #冻结185层或者倒数三层前的所有层，整个模型共有252层</span><br><span class="line">            for i in range(num): model_body.layers[i].trainable = False     #开始冻结</span><br><span class="line">            print(&apos;Freeze the first &#123;&#125; layers of total &#123;&#125; layers.&apos;.format(num, len(model_body.layers)))</span><br><span class="line"></span><br><span class="line">    model_loss = Lambda(yolo_loss, output_shape=(1,), name=&apos;yolo_loss&apos;,                                </span><br><span class="line">        arguments=&#123;&apos;anchors&apos;: anchors, &apos;num_classes&apos;: num_classes, &apos;ignore_thresh&apos;: 0.5&#125;)(</span><br><span class="line">        [*model_body.output, *y_true])                     #开始创建模型的损失函数，输入为model_body.output和y_true，输出output_shape是(1,)，即一个损失值；</span><br><span class="line">    model = Model([model_body.input, *y_true], model_loss)</span><br><span class="line"></span><br><span class="line">    return model</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def data_generator(annotation_lines, batch_size, input_shape, anchors, num_classes):</span><br><span class="line">    &apos;&apos;&apos;data generator for fit_generator&apos;&apos;&apos;               </span><br><span class="line">    n = len(annotation_lines)                    #训练数据的个数设为n</span><br><span class="line">    i = 0</span><br><span class="line">    while True:                                   </span><br><span class="line">        image_data = []                        </span><br><span class="line">        box_data = []</span><br><span class="line">        for b in range(batch_size):</span><br><span class="line">            if i==0:</span><br><span class="line">                np.random.shuffle(annotation_lines)  # 对lines这个列表打乱顺序(直接改变，无返回值)</span><br><span class="line">            image, box = get_random_data(annotation_lines[i], input_shape, random=True)  ##使用utils.py文件中的get_random_data函数对图片进行增强</span><br><span class="line">            image_data.append(image)    # 将image放到image_data中</span><br><span class="line">            box_data.append(box)        # 将box放到boxdata中</span><br><span class="line">            i = (i+1) % n</span><br><span class="line">        image_data = np.array(image_data)</span><br><span class="line">        box_data = np.array(box_data)</span><br><span class="line">        y_true = preprocess_true_boxes(box_data, input_shape, anchors, num_classes)</span><br><span class="line">        yield [image_data, *y_true], np.zeros(batch_size)</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def data_generator_wrapper(annotation_lines, batch_size, input_shape, anchors, num_classes):</span><br><span class="line">    n = len(annotation_lines)</span><br><span class="line">    if n==0 or batch_size&lt;=0: return None    #</span><br><span class="line">    return data_generator(annotation_lines, batch_size, input_shape, anchors, num_classes)    #配合data_generator函数，当训练数据为0或者batch_size&lt;=0时不执行。</span><br></pre></td></tr></table></figure>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">def _main():</span><br><span class="line">    annotation_path = &apos;train.txt&apos;                       #训练数据需要的文本，由annotatio.py得出</span><br><span class="line">    log_dir = &apos;logs/000/&apos;                               #将训练好的权重保存的路径</span><br><span class="line">    classes_path = &apos;model_data/voc_classes.txt&apos;         #保存检测对象的文本</span><br><span class="line">    anchors_path = &apos;model_data/yolo_anchors.txt&apos;        #保存anchors数据的文本</span><br><span class="line">    class_names = get_classes(classes_path)             #得到检测类别的名字，储存在列表中</span><br><span class="line">    num_classes = len(class_names)                      #得到检测类别的数量</span><br><span class="line">    anchors = get_anchors(anchors_path)</span><br><span class="line"></span><br><span class="line">    input_shape = (416,416)                             #输入模型的像素</span><br><span class="line"></span><br><span class="line">    is_tiny_version = len(anchors)==6                   #如果是tiny的话anchors的数量为6</span><br><span class="line">    if is_tiny_version:</span><br><span class="line">        model = create_tiny_model(input_shape, anchors, num_classes,</span><br><span class="line">            freeze_body=2, weights_path=&apos;model_data/tiny_yolo_weights.h5&apos;)</span><br><span class="line">    else:</span><br><span class="line">        model = create_model(input_shape, anchors, num_classes,</span><br><span class="line">            freeze_body=2, weights_path=&apos;model_data/yolo_weights.h5&apos;)                       #用creat_model函数创建模型</span><br><span class="line">                                            </span><br><span class="line">    logging = TensorBoard(log_dir=log_dir)                                                  #利用TensorBoard函数进行可视化</span><br><span class="line">    checkpoint = ModelCheckpoint(log_dir + &apos;ep&#123;epoch:03d&#125;-loss&#123;loss:.3f&#125;-val_loss&#123;va3l_loss:.3f&#125;.h5&apos;,</span><br><span class="line">        monitor=&apos;val_loss&apos;, save_weights_only=True, save_best_only=True, period=3)          #每3个周期计算一次损失，保存最佳的。</span><br><span class="line">    reduce_lr = ReduceLROnPlateau(monitor=&apos;val_loss&apos;, factor=0.1, patience=3, verbose=1)    #当val的损失patience次不再增加时,新的学习率=学习率*factor，verbose为1时更新消息，0时不更新</span><br><span class="line">    early_stopping = EarlyStopping(monitor=&apos;val_loss&apos;, min_delta=0, patience=10, verbose=1) #当val的损失patience次不再增加时，停止训练。</span><br><span class="line"></span><br><span class="line">    val_split = 0.1                   </span><br><span class="line">    with open(annotation_path) as f:</span><br><span class="line">        lines = f.readlines()     #打开annotation_path并读取里面的内容存入lines列表中，也就是训练的数据存入lines</span><br><span class="line">    np.random.seed(10101)         </span><br><span class="line">    np.random.shuffle(lines)      #打乱lines的顺序</span><br><span class="line">    np.random.seed(None)</span><br><span class="line">    num_val = int(len(lines)*val_split)  #val的数量为0.1的lines总数，也就是数据的总数</span><br><span class="line">    num_train = len(lines) - num_val      #train的数量为总数减去val的数量</span><br><span class="line"></span><br><span class="line">    # Train with frozen layers first, to get a stable loss.</span><br><span class="line">    # Adjust num epochs to your dataset. This step is enough to obtain a not bad model.</span><br><span class="line">    if True:</span><br><span class="line">        model.compile(optimizer=Adam(lr=1e-3), loss=&#123;    </span><br><span class="line">            # use custom yolo_loss Lambda layer.</span><br><span class="line">            &apos;yolo_loss&apos;: lambda y_true, y_pred: y_pred&#125;)    #Keras中定义损失函数和优化器的函数，使用Adam梯度下降法，损失函数为yolo自己设定的损失函数</span><br><span class="line"></span><br><span class="line">        batch_size = 32            #设定batch_size。</span><br><span class="line">        print(&apos;Train on &#123;&#125; samples, val on &#123;&#125; samples, with batch size &#123;&#125;.&apos;.format(num_train, num_val, batch_size))       #打印信息：train，val的数量和bath_size</span><br><span class="line">        model.fit_generator(data_generator_wrapper(lines[:num_train], batch_size, input_shape, anchors, num_classes),</span><br><span class="line">                steps_per_epoch=max(1, num_train//batch_size),</span><br><span class="line">                validation_data=data_generator_wrapper(lines[num_train:], batch_size, input_shape, anchors, num_classes),</span><br><span class="line">                validation_steps=max(1, num_val//batch_size),</span><br><span class="line">                epochs=50,</span><br><span class="line">                initial_epoch=0,</span><br><span class="line">                callbacks=[logging, checkpoint])       #使用fit.generator函数开始进行训练</span><br><span class="line">        model.save_weights(log_dir + &apos;trained_weights_stage_1.h5&apos;)   #保存权重文件</span><br><span class="line"></span><br><span class="line">    # Unfreeze and continue training, to fine-tune.</span><br><span class="line">    # Train longer if the result is not good.</span><br><span class="line">    if True:</span><br><span class="line">        for i in range(len(model.layers)):</span><br><span class="line">            model.layers[i].trainable = True       #将所有层解除冻结</span><br><span class="line">        model.compile(optimizer=Adam(lr=1e-4), loss=&#123;&apos;yolo_loss&apos;: lambda y_true, y_pred: y_pred&#125;) # 定义损失函数和重新定义Adam（lr变化了）</span><br><span class="line">        print(&apos;Unfreeze all of the layers.&apos;)</span><br><span class="line"></span><br><span class="line">        batch_size = 32                            #设定非冻结时候的batch_size。</span><br><span class="line">        print(&apos;Train on &#123;&#125; samples, val on &#123;&#125; samples, with batch size &#123;&#125;.&apos;.format(num_train, num_val, batch_size))   #打印信息：train，val的数量和bath_size</span><br><span class="line">        model.fit_generator(data_generator_wrapper(lines[:num_train], batch_size, input_shape, anchors, num_classes),</span><br><span class="line">            steps_per_epoch=max(1, num_train//batch_size),</span><br><span class="line">            validation_data=data_generator_wrapper(lines[num_train:], batch_size, input_shape, anchors, num_classes),</span><br><span class="line">            validation_steps=max(1, num_val//batch_size),</span><br><span class="line">            epochs=100,</span><br><span class="line">            initial_epoch=50,</span><br><span class="line">            callbacks=[logging, checkpoint, reduce_lr, early_stopping]) #使用fit.generator函数进行训练</span><br><span class="line">        model.save_weights(log_dir + &apos;trained_weights_final.h5&apos;)     #保存权重文件</span><br></pre></td></tr></table></figure>
+<hr>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/二维码.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信二维码.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/" class="archive-article-date">
-  	<time datetime="2019-11-22T10:26:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">朱文婷小憨批</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/">朱文婷小憨批</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" class="archive-article-date">
-  	<time datetime="2019-11-21T12:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/">yolov3-keras代码详解-voc-annotatation-py</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -276,8 +353,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
