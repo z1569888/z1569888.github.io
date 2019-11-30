@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>yolov3-keras代码详解-train-py | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：https:&#x2F;&#x2F;github.com&#x2F;qqwweee&#x2F;keras-yolo3&#x2F;blob&#x2F;master&#x2F;train.py。这两个函数作用是将检测类别和anchors储存在列表中 12345678910">
+  <meta name="description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：https:&#x2F;&#x2F;github.com&#x2F;qqwweee&#x2F;keras-yolo3&#x2F;blob&#x2F;master&#x2F;train.py。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="yolov3-keras代码详解-train-py">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;22&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：https:&#x2F;&#x2F;github.com&#x2F;qqwweee&#x2F;keras-yolo3&#x2F;blob&#x2F;master&#x2F;train.py。这两个函数作用是将检测类别和anchors储存在列表中 12345678910">
+<meta property="og:description" content="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：https:&#x2F;&#x2F;github.com&#x2F;qqwweee&#x2F;keras-yolo3&#x2F;blob&#x2F;master&#x2F;train.py。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-26T08:51:51.707Z">
+<meta property="og:updated_time" content="2019-11-30T07:43:00.880Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -180,7 +180,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="在yolov3-keras中，train-py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model-py和untils-py中的函数即可，而后两个代码较难理解，上代码地址：https-github-com-qqwweee-keras-yolo3-blob-master-train-py。"><a href="#在yolov3-keras中，train-py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model-py和untils-py中的函数即可，而后两个代码较难理解，上代码地址：https-github-com-qqwweee-keras-yolo3-blob-master-train-py。" class="headerlink" title="在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：https://github.com/qqwweee/keras-yolo3/blob/master/train.py。"></a>在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：<a href="[https://github.com/qqwweee/keras-yolo3/blob/master/train.py">https://github.com/qqwweee/keras-yolo3/blob/master/train.py</a>。</h2><p>这两个函数作用是将检测类别和anchors储存在列表中</p>
+        <p>在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：<a href="[https://github.com/qqwweee/keras-yolo3/blob/master/train.py">https://github.com/qqwweee/keras-yolo3/blob/master/train.py</a>。</p>
+<a id="more"></a>
+<hr>
+<p>这两个函数作用是将检测类别和anchors储存在列表中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def get_classes(classes_path):                     </span><br><span class="line">    with open(classes_path) as f:                   #用with open as打开classes这个文本</span><br><span class="line">        class_names = f.readlines()                 #读取classes的内容，其中classes的内容为检测的对象</span><br><span class="line">    class_names = [c.strip() for c in class_names]  #对classes链表进行操作，去掉空格部分</span><br><span class="line">    return class_names                              #得到检测对象储存在classes_names这个列表中，作为返回值。</span><br><span class="line"></span><br><span class="line">def get_anchors(anchors_path):</span><br><span class="line">    with open(anchors_path) as f:                       #用with open as打开anchors这个文本</span><br><span class="line">        anchors = f.readline()                          #读取anchors文本中的内容，其中anchors的内容为anchors的长和宽，在yolo中共有9个anchaors	</span><br><span class="line">    anchors = [float(x) for x in anchors.split(&apos;,&apos;)]    #将字符串转换成浮点型。</span><br><span class="line">    return np.array(anchors).reshape(-1, 2)             #把anchors转换成数组，列数为2，长和宽，并且作为返回值</span><br></pre></td></tr></table></figure>
 
 <hr>
