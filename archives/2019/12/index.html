@@ -6,16 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>yolov3-keras代码详解-utils-py | Hexo</title>
+  <title>Archives: 2019/12 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345def compose(*funcs):    if funcs:        return reduce(lambda f, g: lambda *a, **kw: g(f(*a, **kw)), funcs)    else:        raise ValueError(&amp;apos;Composition of empty sequence not supported.&amp;apo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="yolov3-keras代码详解-utils-py">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;26&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;12&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="12345def compose(*funcs):    if funcs:        return reduce(lambda f, g: lambda *a, **kw: g(f(*a, **kw)), funcs)    else:        raise ValueError(&amp;apos;Composition of empty sequence not supported.&amp;apo">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-08T14:20:36.321Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -160,190 +157,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-yolov3-keras代码详解-utils-py" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      yolov3-keras代码详解-utils-py
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2019-12-14T13:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">c++拷贝构造函数</a>
     </h1>
   
 
-        
-        <a href="/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/" class="archive-article-date">
-  	<time datetime="2019-11-26T11:31:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def compose(*funcs):</span><br><span class="line">    if funcs:</span><br><span class="line">        return reduce(lambda f, g: lambda *a, **kw: g(f(*a, **kw)), funcs)</span><br><span class="line">    else:</span><br><span class="line">        raise ValueError(&apos;Composition of empty sequence not supported.&apos;)      #如果funcs是个空元组，主动引发异常。</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+          
 
-<p>这段代码表示没看懂，return reduce(lambda f, g: lambda <em>a, *</em>kw: g(f(<em>a, *</em>kw)), funcs)这个函数蛮复杂的，但是可以讲解一下reduce函数的用法，reduce函数的官方标准形式是reduce(function, sequence[, initial]) -&gt; value，也就是对一个数据集合（元组或者数组）进行函数运算，先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用function函数运算，直到最后得到一个结果，例如</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(add, [1,2,3,4,5])    #对列表进行加法和运算，1+2+3+4+5</span><br></pre></td></tr></table></figure>
-<p>当用lambada表达式时,左边有且须有2个参数，右边是关于这2个参数的表达式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(lambda x,y:x * y, [1,2,4])   #对列表进行乘法运算，1*2*4=8</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def letterbox_image(image, size):     #这个函数对图片进行缩放，然后利用padding使得图片大小保持不变</span><br><span class="line">    &apos;&apos;&apos;resize image with unchanged aspect ratio using padding&apos;&apos;&apos;</span><br><span class="line">    iw, ih = image.size    #PIL库的size函数，返回的是长宽，如（416，416）</span><br><span class="line">    w, h = size</span><br><span class="line">    scale = min(w/iw, h/ih)    </span><br><span class="line">    nw = int(iw*scale)</span><br><span class="line">    nh = int(ih*scale)      #前面四行让size的长宽比例和image的长宽比例一样，并且是一个长或者宽度不变，另一个变化（图片进行缩小了也）</span><br><span class="line">    image = image.resize((nw,nh), Image.BICUBIC)   #使用BICUBIC插值原理对图像进行缩小</span><br><span class="line">    new_image = Image.new(&apos;RGB&apos;, size, (128,128,128))   #使用PIL库中的new函数，函数形式为（mode, size, color)，创建一个图片rgb为（128，128，128），大小为size的图片</span><br><span class="line">    new_image.paste(image, ((w-nw)//2, (h-nh)//2))     #对缩小的部分进行贴图处理，将image图片贴到new_image上，起始点为((w-nw)//2, (h-nh)//2)</span><br><span class="line">    return new_image</span><br></pre></td></tr></table></figure>
-<hr>
-<p>若没有实参，则是创建一个1-2的随机数字</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def rand(a=0, b=1):</span><br><span class="line">    return np.random.rand()*(b-a) + a</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_random_data(annotation_line, input_shape, random=True, max_boxes=20, jitter=.3, hue=.1, sat=1.5, val=1.5, proc_img=True):     #对数据进行增强处理</span><br><span class="line">    &apos;&apos;&apos;random preprocessing for real-time data augmentation&apos;&apos;&apos;</span><br><span class="line">    line = annotation_line.split()           #annotation_line在train.py中为训练数据的图片路径 （lines[:num_train]）</span><br><span class="line">    image = Image.open(line[0])</span><br><span class="line">    iw, ih = image.size                      #数据图片的长宽</span><br><span class="line">    h, w = input_shape                       #训练图片输入的长宽</span><br><span class="line">    box = np.array([np.array(list(map(int,box.split(&apos;,&apos;)))) for box in line[1:]])     #将box变为int类型并且转换成列表然后转换成array类型，得到物理的坐标信心，例如</span><br></pre></td></tr></table></figure>
-<p>[xmin, ymin, xmax, ymax, class]<br> [[150 245 456 395   0]<br>  [134 145 325 325  1]]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">if not random:</span><br><span class="line">    # resize image</span><br><span class="line">    scale = min(w/iw, h/ih) </span><br><span class="line">    nw = int(iw*scale)</span><br><span class="line">    nh = int(ih*scale)                                       #对训练图片的长宽比使得和数据图片的长宽比一样。</span><br><span class="line">    dx = (w-nw)//2</span><br><span class="line">    dy = (h-nh)//2                                           #缩小部分的中心</span><br><span class="line">    image_data=0</span><br><span class="line">    if proc_img:</span><br><span class="line">        image = image.resize((nw,nh), Image.BICUBIC)    #对输入图片进行resize缩放使得和训练图片一样大（长宽比此时还是和原始图片一样）</span><br><span class="line">        new_image = Image.new(&apos;RGB&apos;, (w,h), (128,128,128))</span><br><span class="line">        new_image.paste(image, (dx, dy))                     #和letterbox_image函数操作一样</span><br><span class="line">        image_data = np.array(new_image)/255.                #对new_image图片进行归一化处理</span><br><span class="line"></span><br><span class="line">    # correct boxes</span><br><span class="line">    box_data = np.zeros((max_boxes,5))                       #创建一个20行5列的array</span><br><span class="line">    if len(box)&gt;0:</span><br><span class="line">        np.random.shuffle(box)                          #对box数据进行打乱</span><br><span class="line">        if len(box)&gt;max_boxes: box = box[:max_boxes]    #box的最大数据为20个。</span><br><span class="line">        box[:, [0,2]] = box[:, [0,2]]*scale + dx        #对box的X也进行调整,也就是第0个和第2个数据</span><br><span class="line">        box[:, [1,3]] = box[:, [1,3]]*scale + dy        #对box的y也进行调整,也就是第1个和第3个数据</span><br><span class="line">        box_ w/h * rand(1-jitter,1+jitter)/rand(1-jitter,1+jitter)data[:len(box)] = box                       #将box的数据全部填入到box_data中</span><br><span class="line"></span><br><span class="line">    return image_data, box_data</span><br><span class="line"></span><br><span class="line"># resize image</span><br><span class="line">new_ar = w/h * rand(1-jitter,1+jitter)/rand(1-jitter,1+jitter)</span><br><span class="line">scale = rand(.25, 2)</span><br><span class="line">if new_ar &lt; 1:</span><br><span class="line">    nh = int(scale*h)</span><br><span class="line">    nw = int(nh*new_ar)</span><br><span class="line">else:</span><br><span class="line">    nw = int(scale*w)</span><br><span class="line">    nh = int(nw/new_ar)</span><br><span class="line">image = image.resize((nw,nh), Image.BICUBIC)</span><br><span class="line"></span><br><span class="line"># place image</span><br><span class="line">dx = int(rand(0, w-nw))</span><br><span class="line">dy = int(rand(0, h-nh))</span><br><span class="line">new_image = Image.new(&apos;RGB&apos;, (w,h), (128,128,128))</span><br><span class="line">new_image.paste(image, (dx, dy))</span><br><span class="line">image = new_image</span><br><span class="line"></span><br><span class="line"># flip image or not</span><br><span class="line">flip = rand()&lt;.5</span><br><span class="line">if flip: image = image.transpose(Image.FLIP_LEFT_RIGHT)</span><br><span class="line"></span><br><span class="line"># distort image</span><br><span class="line">hue = rand(-hue, hue)</span><br><span class="line">sat = rand(1, sat) if rand()&lt;.5 else 1/rand(1, sat)</span><br><span class="line">val = rand(1, val) if rand()&lt;.5 else 1/rand(1, val)</span><br><span class="line">x = rgb_to_hsv(np.array(image)/255.)</span><br><span class="line">x[..., 0] += hue [0,2]]*scale + dx        #对box的X也进行调整,也就是第0个和第2个数据</span><br><span class="line">        box[:, [1,3]] = box[:, [1</span><br><span class="line">x[..., 0][x[..., 0]&gt;1] -= 1</span><br><span class="line">x[..., 0][x[..., 0]&lt;0] += 1</span><br><span class="line">x[..., 1] *= sat</span><br><span class="line">x[..., 2] *= val</span><br><span class="line">x[x&gt;1] = 1</span><br><span class="line">x[x&lt;0] = 0</span><br><span class="line">image_data = hsv_to_rgb(x) # numpy array, 0 to 1</span><br><span class="line"></span><br><span class="line"># correct boxes</span><br><span class="line">box_data = np.zeros((max_boxes,5))</span><br><span class="line">if len(box)&gt;0:</span><br><span class="line">    np.random.shuffle(box)</span><br><span class="line">    box[:, [0,2]] = box[:, [0,2]]*nw/iw + dx</span><br><span class="line">    box[:, [1,3]] = box[:, [1,3]]*nh/ih + dy</span><br><span class="line">    if flip: box[:, [0,2]] = w - box[:, [2,0]]</span><br><span class="line">    box[:, 0:2][box[:, 0:2]&lt;0] = 0</span><br><span class="line">    box[:, 2][box[:, 2]&gt;w] = w</span><br><span class="line">    box[:, 3][box[:, 3]&gt;h] = h</span><br><span class="line">    box_w = box[:, 2] - box[:, 0]</span><br><span class="line">    box_h = box[:, 3] - box[:, 1]</span><br><span class="line">    box = box[np.logical_and(box_w&gt;1, box_h&gt;1)] # discard invalid box</span><br><span class="line">    if len(box)&gt;max_boxes: box = box[:max_boxes]</span><br><span class="line">    box_data[:len(box)] = box</span><br><span class="line"></span><br><span class="line">return image_data, box_data</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/二维码.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/微信二维码.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          c++拷贝构造函数
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/11/26/keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-model-py/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">keras代码详解-model-py</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -366,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

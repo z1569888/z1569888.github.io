@@ -159,6 +159,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c-拷贝构造函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">c++拷贝构造函数</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
+  	<time datetime="2019-12-14T13:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##拷贝构造函数的形式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Person</span><br><span class="line">&#123;</span><br><span class="line">	public:</span><br><span class="line">	Person(const Person &amp;orig)</span><br><span class="line">	&#123;</span><br><span class="line">		//函数主体</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>##什么时候调用拷贝构造函数？<br>调用拷贝构造函数通常有三种：<br>1、将对象作为初始化对象，如：<br>Person A1；<br>Person A2（A1）；  //调用拷贝构造函数</p>
+<p>2、将对象作为函数的参数，如：<br>void test(Person A)<br>{<br>    //函数主体<br>}<br>Person A3;<br>test(A3);    //调用拷贝构造函数</p>
+<p>3、将对象作为返回值，如：<br>Person test()<br>{<br>    return A3;<br>}<br>Person A4 = test();  //调用拷贝构造函数</p>
+<hr>
+<p>#什么时候必须要自己写拷贝构造函数？</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-yolov3-keras代码详解-utils-py" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
