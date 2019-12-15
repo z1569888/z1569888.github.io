@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>c++拷贝构造函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="拷贝构造函数的形式123456789class Person&amp;#123;	public:	Person(const Person &amp;amp;orig)	&amp;#123;		&#x2F;&#x2F;函数主体	&amp;#125;&amp;#125;  什么时候调用拷贝构造函数？调用拷贝构造函数通常有三种： 1、将对象作为初始化对象，如：Person A1；Person A2（A1）；  &#x2F;&#x2F;调用拷贝构造函数 2、将对象作为函数的参数，如：">
+  <meta name="description" content="拷贝构造函数的形式123456789class Person&amp;#123;	public:	Person(const Person &amp;amp;orig)	&amp;#123;		&#x2F;&#x2F;函数主体	&amp;#125;&amp;#125;  什么时候调用拷贝构造函数？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++拷贝构造函数">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;14&#x2F;c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="拷贝构造函数的形式123456789class Person&amp;#123;	public:	Person(const Person &amp;amp;orig)	&amp;#123;		&#x2F;&#x2F;函数主体	&amp;#125;&amp;#125;  什么时候调用拷贝构造函数？调用拷贝构造函数通常有三种： 1、将对象作为初始化对象，如：Person A1；Person A2（A1）；  &#x2F;&#x2F;调用拷贝构造函数 2、将对象作为函数的参数，如：">
+<meta property="og:description" content="拷贝构造函数的形式123456789class Person&amp;#123;	public:	Person(const Person &amp;amp;orig)	&amp;#123;		&#x2F;&#x2F;函数主体	&amp;#125;&amp;#125;  什么时候调用拷贝构造函数？">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-15T08:01:10.245Z">
+<meta property="og:updated_time" content="2019-12-15T08:04:52.606Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -182,8 +182,9 @@
       
         <h2 id="拷贝构造函数的形式"><a href="#拷贝构造函数的形式" class="headerlink" title="拷贝构造函数的形式"></a>拷贝构造函数的形式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Person</span><br><span class="line">&#123;</span><br><span class="line">	public:</span><br><span class="line">	Person(const Person &amp;orig)</span><br><span class="line">	&#123;</span><br><span class="line">		//函数主体</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h2 id="什么时候调用拷贝构造函数？"><a href="#什么时候调用拷贝构造函数？" class="headerlink" title="什么时候调用拷贝构造函数？"></a>什么时候调用拷贝构造函数？</h2><p>调用拷贝构造函数通常有三种：</p>
-<h3 id="1、将对象作为初始化对象，如："><a href="#1、将对象作为初始化对象，如：" class="headerlink" title="1、将对象作为初始化对象，如："></a>1、将对象作为初始化对象，如：</h3><p>Person A1；<br>Person A2（A1）；  //调用拷贝构造函数</p>
+<h2 id="什么时候调用拷贝构造函数？"><a href="#什么时候调用拷贝构造函数？" class="headerlink" title="什么时候调用拷贝构造函数？"></a>什么时候调用拷贝构造函数？</h2><a id="more"></a>
+<p>调用拷贝构造函数通常有三种：</p>
+<h3 id="1、将对象作为初始化对象，如：-Person-A1；"><a href="#1、将对象作为初始化对象，如：-Person-A1；" class="headerlink" title="1、将对象作为初始化对象，如： Person A1；"></a>1、将对象作为初始化对象，如： Person A1；</h3><p>Person A2（A1）；  //调用拷贝构造函数</p>
 <h3 id="2、将对象作为函数的参数，如："><a href="#2、将对象作为函数的参数，如：" class="headerlink" title="2、将对象作为函数的参数，如："></a>2、将对象作为函数的参数，如：</h3><p>void test(Person A)<br>{<br>    //函数主体<br>}<br>Person A3;<br>test(A3);    //调用拷贝构造函数</p>
 <h3 id="3、将对象作为返回值，如："><a href="#3、将对象作为返回值，如：" class="headerlink" title="3、将对象作为返回值，如："></a>3、将对象作为返回值，如：</h3><p>Person test()<br>{<br>    return A3;<br>}<br>Person A4 = test();  //调用拷贝构造函数</p>
 <hr>
