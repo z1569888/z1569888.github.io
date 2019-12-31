@@ -6,20 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>yolov3-keras代码详解-voc-annotatation-py | Hexo</title>
+  <title>Archives: 2019/8 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="了解xml文件voc_annotatation.py代码的第一个函数是对xml文件进行操作">
-<meta property="og:type" content="article">
-<meta property="og:title" content="yolov3-keras代码详解-voc-annotatation-py">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;2019&#x2F;08&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="了解xml文件voc_annotatation.py代码的第一个函数是对xml文件进行操作">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py&#x2F;1.png">
-<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py&#x2F;3.png">
-<meta property="og:updated_time" content="2019-11-30T07:45:37.059Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py&#x2F;1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,181 +157,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-yolov3-keras代码详解-voc-annotatation-py" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      yolov3-keras代码详解-voc-annotatation-py
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" class="archive-article-date">
+  	<time datetime="2019-08-21T12:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/">yolov3-keras代码详解-voc-annotatation-py</a>
     </h1>
   
 
-        
-        <a href="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" class="archive-article-date">
-  	<time datetime="2019-11-21T12:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="了解xml文件"><a href="#了解xml文件" class="headerlink" title="了解xml文件"></a>了解xml文件</h2><p>voc_annotatation.py代码的第一个函数是对xml文件进行操作</p>
-<p><img src="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/1.png" alt></p>
-<a id="more"></a>
+        <div class="article-info info-on-right">
+          
+          
 
-<p>想读懂这个函数得对xml文件进行一定的理解，我们以图像标注软件labelmg得到的xml文件为例进行解释</p>
-<p><img src="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/3.png" alt></p>
-<p>xml是一种树结构，它是从根部开始，然后扩展到枝叶，比如annotation就是根元素，而folder,filename,path就是annotation的子元素，并且他们是并列的，而每一个标签，都要有一个关闭标签，如/folder就是folder的关闭标签，folder和关闭标签/folder中间即是它的文本内容，为JPEGImages。<br>所以从这个图中，我们能看出的内容有图片格式，储存的路径，图片的像素大小，深度以及检测目标和bonding box的大小和在图片中的位置。</p>
-<h2 id="读懂convert-annotation函数"><a href="#读懂convert-annotation函数" class="headerlink" title="读懂convert annotation函数"></a>读懂convert annotation函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import xml.etree.ElementTree as ET     #导入python中对xml的处理模块 ELemenTree</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">classes = [&quot;aeroplane&quot;, &quot;bicycle&quot;, &quot;bird&quot;, &quot;boat&quot;, &quot;bottle&quot;, &quot;bus&quot;, &quot;car&quot;, &quot;cat&quot;, &quot;chair&quot;, &quot;cow&quot;, &quot;diningtable&quot;, &quot;dog&quot;, &quot;horse&quot;, &quot;motorbike&quot;, &quot;person&quot;, &quot;pottedplant&quot;, &quot;sheep&quot;, &quot;sofa&quot;, &quot;train&quot;, &quot;tvmonitor&quot;]             </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sets=[(&apos;2007&apos;, &apos;train&apos;), (&apos;2007&apos;, &apos;val&apos;), (&apos;2007&apos;, &apos;test&apos;)]   #建立三个文件夹，其中标题的内容为年份和数据的作用，是用来train，validation还是test的，其中train是训练的，val是在测试中验证是否过拟合，用来调参的，test用来测试。</span><br><span class="line"></span><br><span class="line">def convert_annotation(year, image_id, list_file):               </span><br><span class="line">    in_file = open(&apos;VOCdevkit/VOC%s/Annotations/%s.xml&apos;%(year, image_id))   #用open函数打开这个路径下的xml文件</span><br><span class="line">    tree=ET.parse(in_file)                         #对xml文件进行解析</span><br><span class="line">    root = tree.getroot()                          #获取根结点，getroot，找到根结点后，就可以用根结点进行各种操作</span><br><span class="line"></span><br><span class="line">    for obj in root.iter(&apos;object&apos;):                #iter是搜索函数，遍历根结点下所有的object子结点,iter通常用于遍历</span><br><span class="line">        difficult = obj.find(&apos;difficult&apos;).text     #查找object结点下的第一个difficult结点，并且获取其对应的文本</span><br><span class="line">        cls = obj.find(&apos;name&apos;).text                #查找object结点下的第一个name结点，并且获取其对应的文本</span><br><span class="line">        if cls not in classes or int(difficult)==1:  #如果classes中的内容中不含有name结点的内容或者difficult为1，则continue跳过这一次的循环。所以标注的内容必须是classes中含有的检测对象。</span><br><span class="line">            continue</span><br><span class="line">        cls_id = classes.index(cls)                #标记这一次检测的对象是在classes内容中的第几个。</span><br><span class="line">        xmlbox = obj.find(&apos;bndbox&apos;)                #查找object结点下的第一个bndbox结点，并且获取其对应的文本</span><br><span class="line">        b = (int(xmlbox.find(&apos;xmin&apos;).text), int(xmlbox.find(&apos;ymin&apos;).text), int(xmlbox.find(&apos;xmax&apos;).text), int(xmlbox.find(&apos;ymax&apos;).text))      #获取检测对象方框的长宽和在整个图片的位置，存放在b中。</span><br><span class="line">        list_file.write(&quot; &quot; + &quot;,&quot;.join([str(a) for a in b]) + &apos;,&apos; + str(cls_id))   对list_write文件进行写的操作，写入方框在图片中的长宽和图片的位置以及在classes中是检测对象的序号。</span><br></pre></td></tr></table></figure>
-
-<h2 id="生成训练需要的txt数据"><a href="#生成训练需要的txt数据" class="headerlink" title="生成训练需要的txt数据"></a>生成训练需要的txt数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">for year, image_set in sets:     #对sets的内容进行遍历，为了对3个文本进行操作                                 </span><br><span class="line">    image_ids = open(&apos;VOCdevkit/VOC%s/ImageSets/Main/%s.txt&apos;%(year, image_set)).read().strip().split()     #打开存放在这个路径下的text文件，这三个文件存放着图片的名字</span><br><span class="line">    list_file = open(&apos;%s_%s.txt&apos;%(year, image_set), &apos;w&apos;)                                               #打开这个路径的txt文件，并且以写的方式打开，后面这些文件即是train是需要的txt数据</span><br><span class="line">    for image_id in image_ids:</span><br><span class="line">        list_file.write(&apos;%s/VOCdevkit/VOC%s/JPEGImages/%s.jpg&apos;%(wd, year, image_id))                     #对txt文件进行写的操作，写入内容为图片的路径</span><br><span class="line">        convert_annotation(year, image_id, list_file)                                                     #使用convert_annotation函数，写入这个图片中所有方框的内容，包括长宽以及在整个图片中的位置</span><br><span class="line">        list_file.write(&apos;\n&apos;)                                                    #每张检的图片另起一行。</span><br><span class="line">    list_file.close()                                                             #关闭文件。</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，这个py文件就是生成训练时候所需要的数据文本，之后就能真正开始训练数据了，需要提前在相应的路径下创建三个文本并且提前写入你要train，test和validation的图片，比例可以自己设定，比如6:2:2，8:1:1，在网上也能搜索到自动生成这三个文本的代码。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/二维码.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/微信二维码.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          黑田千鹤
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -360,8 +222,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
