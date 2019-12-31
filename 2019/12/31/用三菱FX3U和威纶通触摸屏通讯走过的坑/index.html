@@ -6,13 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>用三菱FX3U和威纶通触摸屏通讯走过的坑 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="最近想用一台PLC能够对电机的速度进行实时的控制，但是但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何，所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用三菱FX3U和威纶通触摸屏通讯走过的坑">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近想用一台PLC能够对电机的速度进行实时的控制，但是但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何，所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-31T09:33:34.895Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -157,238 +160,173 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-用三菱FX3U和威纶通触摸屏通讯走过的坑" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      用三菱FX3U和威纶通触摸屏通讯走过的坑
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/" class="archive-article-date">
+
+        
+        <a href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/" class="archive-article-date">
   	<time datetime="2019-12-31T14:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/">用三菱FX3U和威纶通触摸屏通讯走过的坑</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>  最近想用一台PLC能够对电机的速度进行实时的控制，但是但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何，<br>所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵，敲定型号为3U。</p>
+<p>  由于我想用24个模拟量输入和24个模拟量输出，增加扩展模块不够数量，所以用两个CPU也就是两个三菱PLC和威纶通触摸屏通讯，我用的触摸屏型号是8150ie，带有网口和2个com口，分别可以用485和232进行通讯。3U加网口模块价<br>钱也比较贵，所以用了2个串口进行分别通讯。从图上的com口可以看出，想要两个com口进行通讯，只能选用com1的232和com3的485。</p>
+<hr>
+<p>##深坑一：422转485只能只能用485/4w，不能用485/2w<br>  在网上可以直接买到422转485的通讯线，而com3的485通讯只能用2w的模式，经过实验发现在com1口485/2w竟然可以用这根线通讯，所以我以为触摸屏是能用2w进行通讯的，我将买到线上的1号和2号pin分别连在了触摸屏的7号和8号<br>针口上，对com3的485/2w进行通讯，但是并不成功。然后我将买到的线6789针口去掉，发现com1的485/2w是可以通讯的，但是当我在把3号针口或者4号针口去掉后，竟然不能通讯了。故我猜此时仍然是485/4w进行通讯，可能在触摸屏<br>内部进行了转换，而在官方说明书上并没有说明这一点。所以想要用两个串口进行通讯，485的通讯只能在3u上添加一个485bd模块进行2w的通讯。</p>
+<hr>
+<p>##深坑2：232通讯可以在软件上选择fx3u/3g，而485通讯只能选择232/485bd<br>  由于本人开始的不细心，选择设备的时候一直选择的是fx3u/3g进行通讯，而开始添加232模块后用232通讯的时候在软件上选择这一项是成功的（经过实验发现触摸屏不支持422转232，只能在plc上添加232模块），我就一直以为设&gt;备选择3u/3g即可，直到最后才发现用485bd通讯的时候只能选择232/485bd。</p>
+<hr>
+<p>##深坑三：对三菱的参数需要设定正确<br>  波特率，站号都要注意，尤其是站好的设定，需要和触摸屏一</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/二维码.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信二维码.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2019-12-29T13:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Keras定义自己的损失函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">Keras定义自己的损失函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2019-12-14T13:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">c++拷贝构造函数</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/" class="archive-article-date">
-  	<time datetime="2019-11-26T11:31:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/">yolov3-keras代码详解-utils-py</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/26/keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-model-py/" class="archive-article-date">
-  	<time datetime="2019-11-26T08:57:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/26/keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-model-py/">keras代码详解-model-py</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/" class="archive-article-date">
-  	<time datetime="2019-11-22T13:48:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/">yolov3-keras代码详解-train-py</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/" class="archive-article-date">
-  	<time datetime="2019-11-22T10:26:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/">黑田千鹤</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" class="archive-article-date">
-  	<time datetime="2019-11-21T12:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/">yolov3-keras代码详解-voc-annotatation-py</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -411,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
