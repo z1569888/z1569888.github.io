@@ -159,6 +159,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-yolov3-keras代码详解-yolo-video-py" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/">yolov3-keras代码详解-yolo_video.py</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/" class="archive-article-date">
+  	<time datetime="2020-01-11T06:42:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def detect_img(yolo):</span><br><span class="line">    while True:</span><br><span class="line">        img = input(&apos;Input image filename:&apos;)</span><br><span class="line">        try:</span><br><span class="line">            image = Image.open(img)</span><br><span class="line">        except:</span><br><span class="line">            print(&apos;Open Error! Try again!&apos;)</span><br><span class="line">            continue</span><br><span class="line">        else:</span><br><span class="line">            r_image = yolo.detect_image(image)</span><br><span class="line">            r_image.show()</span><br><span class="line">    yolo.close_session()</span><br><span class="line">FLAGS = None</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # class YOLO defines the default value, so suppress any default here</span><br><span class="line">    parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    Command line options</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--model&apos;, type=str,</span><br><span class="line">        help=&apos;path to model weight file, default &apos; + YOLO.get_defaults(&quot;model_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--anchors&apos;, type=str,</span><br><span class="line">        help=&apos;path to anchor definitions, default &apos; + YOLO.get_defaults(&quot;anchors_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--classes&apos;, type=str,</span><br><span class="line">        help=&apos;path to class definitions, default &apos; + YOLO.get_defaults(&quot;classes_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--gpu_num&apos;, type=int,</span><br><span class="line">        help=&apos;Number of GPU to use, default &apos; + str(YOLO.get_defaults(&quot;gpu_num&quot;))</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--image&apos;, default=False, action=&quot;store_true&quot;,</span><br><span class="line">        help=&apos;Image detection mode, will ignore all positional arguments&apos;</span><br><span class="line">    )</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    Command line positional arguments -- for video detection mode</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &quot;--input&quot;, nargs=&apos;?&apos;, type=str,required=False,default=&apos;./path2your_video&apos;,</span><br><span class="line">        help = &quot;Video input path&quot;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &quot;--output&quot;, nargs=&apos;?&apos;, type=str, default=&quot;&quot;,</span><br><span class="line">        help = &quot;[Optional] Video output path&quot;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    FLAGS = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    if FLAGS.image:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Image detection mode, disregard any remaining command line arguments</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print(&quot;Image detection mode&quot;)</span><br><span class="line">        if &quot;input&quot; in FLAGS:</span><br><span class="line">            print(&quot; Ignoring remaining command line arguments: &quot; + FLAGS.input + &quot;,&quot; + FLAGS.output)</span><br><span class="line">        detect_img(YOLO(**vars(FLAGS)))</span><br><span class="line">    elif &quot;input&quot; in FLAGS:</span><br><span class="line">        detect_video(YOLO(**vars(FLAGS)), FLAGS.input, FLAGS.output)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;Must specify at least video_input_path.  See usage with --help.&quot;)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-用三菱FX3U和威纶通触摸屏通讯走过的坑" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -893,7 +958,7 @@ def yolo_loss(args, anchors, num_classes, ignore_thresh=.5, print_loss=True):
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：<a href="[https://github.com/qqwweee/keras-yolo3/blob/master/train.py">https://github.com/qqwweee/keras-yolo3/blob/master/train.py</a>。</p>
+        <p>在yolov3-keras中，train.py是主程序，这部分代码用来训练数据，较容易理解，运用Keras库中的函数和model.py和untils.py中的函数即可，而后两个代码较难理解，上代码地址：<a href="[https://github.com/qqwweee/keras-yolo3/blob/master/train.py">https://github.com/qqwweee/keras-yolo3/blob/master/train.py</a>。train的大致流程是设置网络模型（输入层Input，隐藏层的设置，输出层的设置），是否加载预权重，设置compile优化器，使用fit或者fit_generate进行训练。</p>
         
       
 
@@ -907,69 +972,6 @@ def yolo_loss(args, anchors, num_classes, ignore_thresh=.5, print_loss=True):
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-朱文婷小憨批" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/">黑田千鹤</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/" class="archive-article-date">
-  	<time datetime="2019-11-22T10:26:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id><a href="#" class="headerlink" title></a></h2><h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><p><img src="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/zhu.jpg" alt><br>反正呢，情况就是这么个情况。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/22/%E6%9C%B1%E6%96%87%E5%A9%B7%E5%B0%8F%E6%86%A8%E6%89%B9/">展开全文 >></a>
         </p>
       
 
@@ -1073,7 +1075,7 @@ def yolo_loss(args, anchors, num_classes, ignore_thresh=.5, print_loss=True):
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 tpg
+    		&copy; 2020 tpg
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
