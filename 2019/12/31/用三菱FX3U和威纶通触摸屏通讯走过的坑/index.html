@@ -21,7 +21,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91&#x2F;485bd.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91&#x2F;sanlingcanshu.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91&#x2F;485bd%E6%8E%A5%E7%BA%BF2.png">
-<meta property="og:updated_time" content="2019-12-31T13:52:48.117Z">
+<meta property="og:updated_time" content="2020-05-25T09:32:03.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;31&#x2F;%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91&#x2F;comkou2.png">
   
@@ -187,7 +187,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  最近想用一台PLC能够对电机的速度进行实时的控制，但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何,所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵，敲定型号为3U。<br>  因为我想用24个模拟量输入和24个模拟量输出，增加扩展模块不够数量，所以用两个CPU也就是两个三菱PLC和威纶通触摸屏通讯，我用的触摸屏型号是8150ie，带有网口和2个com口，分别可以用485和232进行通讯。3U加网口模块价钱也比较贵，所以用了2个串口进行分别通讯。从图上的com口可以看出，想要两个com口进行通讯，只能选用com1的232和com3的485。<br><img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/comkou2.png" alt></p>
+        <p>  最近想用一台PLC能够对电机的速度进行实时的控制，但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何,所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵，敲定型号为3U。<br>  因为我想用24个模拟量输入和24个模拟量输出，增加扩展模块不够数量，所以用两个CPU也就是两个三菱PLC和威纶通触摸屏通讯，我用的触摸屏型号是8150ie，带有网口和2个com口，分别可以用485和232进行通讯。3U加网口模块价钱也比较贵，所以用了2个串口进行分别通讯。从图上的com口可以看出，想要两个com口进行通讯，只能选用com1的232和com3的485。</p>
+<a id="more"></a>
+<p><img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/comkou2.png" alt></p>
 <h2 id="坑一：422转485只能只能用485-4w，不能用485-2w"><a href="#坑一：422转485只能只能用485-4w，不能用485-2w" class="headerlink" title="坑一：422转485只能只能用485/4w，不能用485/2w"></a>坑一：422转485只能只能用485/4w，不能用485/2w</h2><p>  在网上可以直接买到422转485的通讯线，而com3的485通讯只能用2w的模式，经过实验发现在com1口485/2w竟然可以用这根线通讯，所以我以为触摸屏是能用2w进行通讯的，我将买到线上的1号和2号pin分别连在了触摸屏的7号和8号针口上<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/8150.png" alt>，对com3的485/2w进行通讯，但是并不成功。然后我将买到的线6789针口去掉，发现com1的485/2w是可以通讯的，但是当我在把3号针口或者4号针口去掉后，竟然不能通讯了。故我猜此时仍然是485/4w进行通讯，可能在触摸屏的内部进行了转换，而在官方说明书上并没有说明这一点。所以想要用两个串口进行通讯，485的通讯只能在3u上添加一个485bd模块进行2w的通讯。</p>
 <h2 id="坑二：232通讯可以在软件上选择fx3u-3g，而485通讯只能选择232-485bd"><a href="#坑二：232通讯可以在软件上选择fx3u-3g，而485通讯只能选择232-485bd" class="headerlink" title="坑二：232通讯可以在软件上选择fx3u/3g，而485通讯只能选择232/485bd"></a>坑二：232通讯可以在软件上选择fx3u/3g，而485通讯只能选择232/485bd</h2><p>  由于本人开始的不细心，选择设备的时候一直选择的是fx3u/3g进行通讯<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/fx3u.png" alt>)，但是开始添加232模块后用232通讯的时候在软件上选择这一项是成功的（经过实验发现触摸屏不支持422转232，只能在plc上添加232模块），所以一直认为设备选择3u/3g即可。最后发现用485bd通讯的时候只能选择232/485bd<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/485bd.png" alt>，但是用232模块的时候两项都可。</p>
 <h2 id="坑三：对三菱的参数需要设定正确"><a href="#坑三：对三菱的参数需要设定正确" class="headerlink" title="坑三：对三菱的参数需要设定正确"></a>坑三：对三菱的参数需要设定正确</h2><p><img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/sanlingcanshu.png" alt><br>这是在三菱软件上进行参数的设置，尤其要注意奇偶和站号的设定，要与触摸屏上的奇偶和站号相对应，同时触摸屏上软元件的设定前面要加上#，比如一号站的m1继电器为为1#m1。</p>
@@ -296,18 +298,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          yolov3-keras代码详解-yolo_video.py
+          用QT设计一个检测GUI
         
       </div>
     </a>
   
   
-    <a href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Keras定义自己的损失函数</div>
+    <a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">c++拷贝构造函数</div>
       <i class="icon-circle-right"></i>
     </a>
   

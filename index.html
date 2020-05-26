@@ -159,30 +159,28 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-yolov3-keras代码详解-yolo-video-py" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-用QT设计一个检测GUI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/">yolov3-keras代码详解-yolo_video.py</a>
+      <a class="article-title" href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/">用QT设计一个检测GUI</a>
     </h1>
   
 
         
-        <a href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/" class="archive-article-date">
-  	<time datetime="2020-01-11T06:42:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-11</time>
+        <a href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/" class="archive-article-date">
+  	<time datetime="2020-05-26T03:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def detect_img(yolo):</span><br><span class="line">    while True:</span><br><span class="line">        img = input(&apos;Input image filename:&apos;)</span><br><span class="line">        try:</span><br><span class="line">            image = Image.open(img)</span><br><span class="line">        except:</span><br><span class="line">            print(&apos;Open Error! Try again!&apos;)</span><br><span class="line">            continue</span><br><span class="line">        else:</span><br><span class="line">            r_image = yolo.detect_image(image)</span><br><span class="line">            r_image.show()</span><br><span class="line">    yolo.close_session()</span><br><span class="line">FLAGS = None</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    # class YOLO defines the default value, so suppress any default here</span><br><span class="line">    parser = argparse.ArgumentParser(argument_default=argparse.SUPPRESS)</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    Command line options</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--model&apos;, type=str,</span><br><span class="line">        help=&apos;path to model weight file, default &apos; + YOLO.get_defaults(&quot;model_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--anchors&apos;, type=str,</span><br><span class="line">        help=&apos;path to anchor definitions, default &apos; + YOLO.get_defaults(&quot;anchors_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--classes&apos;, type=str,</span><br><span class="line">        help=&apos;path to class definitions, default &apos; + YOLO.get_defaults(&quot;classes_path&quot;)</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--gpu_num&apos;, type=int,</span><br><span class="line">        help=&apos;Number of GPU to use, default &apos; + str(YOLO.get_defaults(&quot;gpu_num&quot;))</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &apos;--image&apos;, default=False, action=&quot;store_true&quot;,</span><br><span class="line">        help=&apos;Image detection mode, will ignore all positional arguments&apos;</span><br><span class="line">    )</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    Command line positional arguments -- for video detection mode</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &quot;--input&quot;, nargs=&apos;?&apos;, type=str,required=False,default=&apos;./path2your_video&apos;,</span><br><span class="line">        help = &quot;Video input path&quot;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    parser.add_argument(</span><br><span class="line">        &quot;--output&quot;, nargs=&apos;?&apos;, type=str, default=&quot;&quot;,</span><br><span class="line">        help = &quot;[Optional] Video output path&quot;</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    FLAGS = parser.parse_args()</span><br><span class="line"></span><br><span class="line">    if FLAGS.image:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Image detection mode, disregard any remaining command line arguments</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        print(&quot;Image detection mode&quot;)</span><br><span class="line">        if &quot;input&quot; in FLAGS:</span><br><span class="line">            print(&quot; Ignoring remaining command line arguments: &quot; + FLAGS.input + &quot;,&quot; + FLAGS.output)</span><br><span class="line">        detect_img(YOLO(**vars(FLAGS)))</span><br><span class="line">    elif &quot;input&quot; in FLAGS:</span><br><span class="line">        detect_video(YOLO(**vars(FLAGS)), FLAGS.input, FLAGS.output)</span><br><span class="line">    else:</span><br><span class="line">        print(&quot;Must specify at least video_input_path.  See usage with --help.&quot;)</span><br></pre></td></tr></table></figure>
-
+        <p>由于项目需要，用QT设计了一个缺陷检测的人机交互界面，检测算法是基于yolov3，用Keras框架编写，源码地址是：<a href="https://github.com/qqwweee/keras-yolo3。" target="_blank" rel="noopener">https://github.com/qqwweee/keras-yolo3。</a> 所以如果想要检测图片的话，只需要创建一个YOLO类，然后使用类中的函数yolo.detect_image()，函数中的变量就是需要检测的图片。<br>图形界面形状为下图，大概分为对单张图片检测，文件夹图片批量检测，视频检测和摄像头检测。所有的检测其实都是基于yolo.detect_image()这个函数，批量检测就是将文件夹中所有的图片重复使用这个函数，视频检测将视频中的每一帧转换成图片，接着对这张图片使用函数进行检测，摄像头检测同理。下面对图像界面中的几个重要控件解释，想要界面的源码可以联系QQ963937727。<br><img src="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/main.png" alt></p>
+        
       
 
       
@@ -194,7 +192,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/11/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-yolo-video-py/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/">展开全文 >></a>
         </p>
       
 
@@ -244,13 +242,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  最近想用一台PLC能够对电机的速度进行实时的控制，但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何,所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵，敲定型号为3U。<br>  因为我想用24个模拟量输入和24个模拟量输出，增加扩展模块不够数量，所以用两个CPU也就是两个三菱PLC和威纶通触摸屏通讯，我用的触摸屏型号是8150ie，带有网口和2个com口，分别可以用485和232进行通讯。3U加网口模块价钱也比较贵，所以用了2个串口进行分别通讯。从图上的com口可以看出，想要两个com口进行通讯，只能选用com1的232和com3的485。<br><img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/comkou2.png" alt></p>
-<h2 id="坑一：422转485只能只能用485-4w，不能用485-2w"><a href="#坑一：422转485只能只能用485-4w，不能用485-2w" class="headerlink" title="坑一：422转485只能只能用485/4w，不能用485/2w"></a>坑一：422转485只能只能用485/4w，不能用485/2w</h2><p>  在网上可以直接买到422转485的通讯线，而com3的485通讯只能用2w的模式，经过实验发现在com1口485/2w竟然可以用这根线通讯，所以我以为触摸屏是能用2w进行通讯的，我将买到线上的1号和2号pin分别连在了触摸屏的7号和8号针口上<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/8150.png" alt>，对com3的485/2w进行通讯，但是并不成功。然后我将买到的线6789针口去掉，发现com1的485/2w是可以通讯的，但是当我在把3号针口或者4号针口去掉后，竟然不能通讯了。故我猜此时仍然是485/4w进行通讯，可能在触摸屏的内部进行了转换，而在官方说明书上并没有说明这一点。所以想要用两个串口进行通讯，485的通讯只能在3u上添加一个485bd模块进行2w的通讯。</p>
-<h2 id="坑二：232通讯可以在软件上选择fx3u-3g，而485通讯只能选择232-485bd"><a href="#坑二：232通讯可以在软件上选择fx3u-3g，而485通讯只能选择232-485bd" class="headerlink" title="坑二：232通讯可以在软件上选择fx3u/3g，而485通讯只能选择232/485bd"></a>坑二：232通讯可以在软件上选择fx3u/3g，而485通讯只能选择232/485bd</h2><p>  由于本人开始的不细心，选择设备的时候一直选择的是fx3u/3g进行通讯<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/fx3u.png" alt>)，但是开始添加232模块后用232通讯的时候在软件上选择这一项是成功的（经过实验发现触摸屏不支持422转232，只能在plc上添加232模块），所以一直认为设备选择3u/3g即可。最后发现用485bd通讯的时候只能选择232/485bd<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/485bd.png" alt>，但是用232模块的时候两项都可。</p>
-<h2 id="坑三：对三菱的参数需要设定正确"><a href="#坑三：对三菱的参数需要设定正确" class="headerlink" title="坑三：对三菱的参数需要设定正确"></a>坑三：对三菱的参数需要设定正确</h2><p><img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/sanlingcanshu.png" alt><br>这是在三菱软件上进行参数的设置，尤其要注意奇偶和站号的设定，要与触摸屏上的奇偶和站号相对应，同时触摸屏上软元件的设定前面要加上#，比如一号站的m1继电器为为1#m1。</p>
-<h2 id="坑四-每次设定完三菱的参数后需要重新启动PLC"><a href="#坑四-每次设定完三菱的参数后需要重新启动PLC" class="headerlink" title="坑四 每次设定完三菱的参数后需要重新启动PLC"></a>坑四 每次设定完三菱的参数后需要重新启动PLC</h2><p>因为我没注意到这个问题，导致浪费很多时间处于蒙逼状况。</p>
-<h2 id="坑五-485bd的输入输出信号线不要接错"><a href="#坑五-485bd的输入输出信号线不要接错" class="headerlink" title="坑五 485bd的输入输出信号线不要接错"></a>坑五 485bd的输入输出信号线不要接错</h2><p>由于我是用485bd与触摸屏的485/2w通讯的，所以要将485bd上的rda和sda短接，rdb和sdb短接，使得485bd一个进行输出信号，一个进行输入信号。<img src="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/485bd%E6%8E%A5%E7%BA%BF2.png" alt>，同时plc的输出信号rda接入触摸屏的输入pin，也就是485/2w中的data-，rdb接入data+。如果线接反了的话，在485bd模块上只有一个灯闪烁。</p>
-
+        <p>  最近想用一台PLC能够对电机的速度进行实时的控制，但是西门子的PLC要想达到这个效果得让新的指令不断覆盖之前的指令，达到具有新的速度，也就是超驰，但是实行起来有点复杂，且网上资料较少，不知道效果具体如何,所以选用三菱的PLC，使用PLSY命令能够实现对速度的实时变化，缺点就是关于脉冲量的计算在后面的其他工作中可能会有点复杂，但是在之前的实践中达到了解决，所以选用了三菱，由于fx5U价钱昂贵，敲定型号为3U。<br>  因为我想用24个模拟量输入和24个模拟量输出，增加扩展模块不够数量，所以用两个CPU也就是两个三菱PLC和威纶通触摸屏通讯，我用的触摸屏型号是8150ie，带有网口和2个com口，分别可以用485和232进行通讯。3U加网口模块价钱也比较贵，所以用了2个串口进行分别通讯。从图上的com口可以看出，想要两个com口进行通讯，只能选用com1的232和com3的485。</p>
+        
       
 
       
@@ -263,68 +256,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Keras定义自己的损失函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">Keras定义自己的损失函数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2019-12-29T13:01:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/29/Keras%E5%AE%9A%E4%B9%89%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/">展开全文 >></a>
         </p>
       
 
@@ -504,399 +435,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>model.py是Keras定义yolov3darknet53的模型代码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def DarknetConv2D(*args, **kwargs):   #卷积层，带有正则化，当步长为2时具有下采样</span><br><span class="line">    &quot;&quot;&quot;Wrapper to set Darknet parameters for Convolution2D.&quot;&quot;&quot;</span><br><span class="line">    darknet_conv_kwargs = &#123;&apos;kernel_regularizer&apos;: l2(5e-4)&#125;</span><br><span class="line">    darknet_conv_kwargs[&apos;padding&apos;] = &apos;valid&apos; if kwargs.get(&apos;strides&apos;)==(2,2) else &apos;same&apos;</span><br><span class="line">    darknet_conv_kwargs.update(kwargs)</span><br><span class="line">    return Conv2D(*args, **darknet_conv_kwargs)</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def DarknetConv2D_BN_Leaky(*args, **kwargs):</span><br><span class="line">    #BN层，并且后面用Relu层进行激活</span><br><span class="line">    &quot;&quot;&quot;Darknet Convolution2D followed by BatchNormalization and LeakyReLU.&quot;&quot;&quot;</span><br><span class="line">    no_bias_kwargs = &#123;&apos;use_bias&apos;: False&#125;</span><br><span class="line">    no_bias_kwargs.update(kwargs)</span><br><span class="line">    return compose(</span><br><span class="line">        DarknetConv2D(*args, **no_bias_kwargs),</span><br><span class="line">        BatchNormalization(),</span><br><span class="line">        LeakyReLU(alpha=0.1))</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def resblock_body(x, num_filters, num_blocks):</span><br><span class="line">    # 使用残差块， 1 + 2 * num_filters 为总的卷积层数</span><br><span class="line">    &apos;&apos;&apos;A series of resblocks starting with a downsampling Convolution2D&apos;&apos;&apos;</span><br><span class="line">    # Darknet uses left and top padding instead of &apos;same&apos; mode</span><br><span class="line">    x = ZeroPadding2D(((1, 0), (1, 0)))(x)</span><br><span class="line">    x = DarknetConv2D_BN_Leaky(num_filters, (3, 3), strides=(2, 2))(x)</span><br><span class="line">    for i in range(num_blocks):</span><br><span class="line">        y = compose(</span><br><span class="line">            DarknetConv2D_BN_Leaky(num_filters // 2, (1, 1)),</span><br><span class="line">            DarknetConv2D_BN_Leaky(num_filters, (3, 3)))(x)</span><br><span class="line">        x = Add()([x, y])</span><br><span class="line">    return x</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def darknet_body(x):</span><br><span class="line">    # darknet的主体网络52层卷积网络</span><br><span class="line">    &apos;&apos;&apos;Darknent body having 52 Convolution2D layers&apos;&apos;&apos;</span><br><span class="line">    x = DarknetConv2D_BN_Leaky(32, (3, 3))(x)</span><br><span class="line">    x = resblock_body(x, num_filters=64, num_blocks=1)</span><br><span class="line">    x = resblock_body(x, num_filters=128, num_blocks=2)</span><br><span class="line">    x = resblock_body(x, num_filters=256, num_blocks=8)</span><br><span class="line">    x = resblock_body(x, num_filters=512, num_blocks=8)</span><br><span class="line">    x = resblock_body(x, num_filters=1024, num_blocks=4)</span><br><span class="line">    return x</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def make_last_layers(x, num_filters, out_filters):</span><br><span class="line">    # 最后检测头部，无降采采样操作</span><br><span class="line">    &apos;&apos;&apos;6 Conv2D_BN_Leaky layers followed by a Conv2D_linear layer&apos;&apos;&apos;</span><br><span class="line">    x = compose(</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters, (1, 1)),</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters * 2, (3, 3)),</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters, (1, 1)),</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters * 2, (3, 3)),</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters, (1, 1)))(x)</span><br><span class="line">    y = compose(</span><br><span class="line">        DarknetConv2D_BN_Leaky(num_filters * 2, (3, 3)),</span><br><span class="line">        DarknetConv2D(out_filters, (1, 1)))(x)</span><br><span class="line">    return x, y</span><br></pre></td></tr></table></figure>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def yolo_body(inputs, num_anchors, num_classes):</span><br><span class="line">    &quot;&quot;&quot;Create YOLO_V3 model CNN body in Keras.&quot;&quot;&quot;</span><br><span class="line">    darknet = Model(inputs, darknet_body(inputs))</span><br><span class="line">    x, y1 = make_last_layers(darknet.output, 512, num_anchors * (num_classes + 5))</span><br><span class="line">    # 上采样</span><br><span class="line">    x = compose(</span><br><span class="line">        DarknetConv2D_BN_Leaky(256, (1, 1)),</span><br><span class="line">        UpSampling2D(2))(x)</span><br><span class="line">    x = Concatenate()([x, darknet.layers[152].output])</span><br><span class="line">    x, y2 = make_last_layers(x, 256, num_anchors * (num_classes + 5))</span><br><span class="line">    # 上采样</span><br><span class="line">    x = compose(</span><br><span class="line">        DarknetConv2D_BN_Leaky(128, (1, 1)),</span><br><span class="line">        UpSampling2D(2))(x)</span><br><span class="line">    x = Concatenate()([x, darknet.layers[92].output])</span><br><span class="line">    _, y3 = make_last_layers(x, 128, num_anchors * (num_classes + 5))</span><br><span class="line">    # 上采样 y1, y2, y3</span><br><span class="line">    # 13x13, 26x26, 52x52</span><br><span class="line">    return Model(inputs, [y1, y2, y3])</span><br></pre></td></tr></table></figure>
-<hr>
-<pre><code>def tiny_yolo_body(inputs, num_anchors, num_classes):
-    &apos;&apos;&apos;Create Tiny YOLO_v3 model CNN body in keras.&apos;&apos;&apos;
-    x1 = compose(
-        DarknetConv2D_BN_Leaky(16, (3, 3)),
-        MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(32, (3, 3)),
-        MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(64, (3, 3)),
-        MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(128, (3, 3)),
-        MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(256, (3, 3)))(inputs)
-    x2 = compose(
-        MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(512, (3, 3)),
-        MaxPooling2D(pool_size=(2, 2), strides=(1, 1), padding=&apos;same&apos;),
-        DarknetConv2D_BN_Leaky(1024, (3, 3)),
-        DarknetConv2D_BN_Leaky(256, (1, 1)))(x1)
-    y1 = compose(
-        DarknetConv2D_BN_Leaky(512, (3, 3)),
-        DarknetConv2D(num_anchors * (num_classes + 5), (1, 1)))(x2)
-
-    x2 = compose(
-        DarknetConv2D_BN_Leaky(128, (1, 1)),
-        UpSampling2D(2))(x2)
-    y2 = compose(
-        Concatenate(),
-        DarknetConv2D_BN_Leaky(256, (3, 3)),
-        DarknetConv2D(num_anchors * (num_classes + 5), (1, 1)))([x2, x1])
-
-    return Model(inputs, [y1, y2])
-
-
-def yolo_head(feats, anchors, num_classes, input_shape, calc_loss=False):
-    &quot;&quot;&quot;
-    feats的后处理函数，feats就是yolo_outputs，把输出转换到inputs的坐标系
-    &quot;&quot;&quot;
-    num_anchors = len(anchors)
-    # Reshape to batch, height, width, num_anchors, box_params.
-    anchors_tensor = K.reshape(K.constant(anchors), [1, 1, 1, num_anchors, 2])
-
-    grid_shape = K.shape(feats)[1:3]  # height, width
-    grid_y = K.tile(K.reshape(K.arange(0, stop=grid_shape[0]), [-1, 1, 1, 1]),
-                    [1, grid_shape[1], 1, 1])
-    grid_x = K.tile(K.reshape(K.arange(0, stop=grid_shape[1]), [1, -1, 1, 1]),
-                    [grid_shape[0], 1, 1, 1])
-    grid = K.concatenate([grid_x, grid_y])
-    grid = K.cast(grid, K.dtype(feats))
-    # Reshape to batch, height, width, num_anchors, box_params.
-    feats = K.reshape(
-        feats, [-1, grid_shape[0], grid_shape[1], num_anchors, num_classes + 5])
-
-    # Adjust preditions to each spatial grid point and anchor size.
-    # 把结果转化到每个格子中，坐标为图片的坐标系的0-1，类别预测也为0-1
-    box_xy = (K.sigmoid(feats[..., :2]) + grid) / K.cast(grid_shape[::-1], K.dtype(feats))  # xy是归一化的值
-    box_wh = K.exp(feats[..., 2:4]) * anchors_tensor / K.cast(input_shape[::-1], K.dtype(feats))  # wh是归一化的值
-    box_confidence = K.sigmoid(feats[..., 4:5])
-    box_class_probs = K.sigmoid(feats[..., 5:])
-
-    if calc_loss == True:
-        return grid, feats, box_xy, box_wh
-    return box_xy, box_wh, box_confidence, box_class_probs
-
-
-def yolo_correct_boxes(box_xy, box_wh, input_shape, image_shape):
-    &apos;&apos;&apos;Get corrected boxes&apos;&apos;&apos;
-    # 把预测的图片转换到原始图片的大小
-    box_yx = box_xy[..., ::-1]
-    box_hw = box_wh[..., ::-1]
-    input_shape = K.cast(input_shape, K.dtype(box_yx))
-    image_shape = K.cast(image_shape, K.dtype(box_yx))
-    new_shape = K.round(image_shape * K.min(input_shape / image_shape))
-    offset = (input_shape - new_shape) / 2. / input_shape
-    scale = input_shape / new_shape
-    box_yx = (box_yx - offset) * scale
-    box_hw *= scale
-
-    box_mins = box_yx - (box_hw / 2.)
-    box_maxes = box_yx + (box_hw / 2.)
-    boxes = K.concatenate([
-        box_mins[..., 0:1],  # y_min
-        box_mins[..., 1:2],  # x_min
-        box_maxes[..., 0:1],  # y_max
-        box_maxes[..., 1:2]  # x_max
-    ])
-
-    # Scale boxes back to original image shape.
-    boxes *= K.concatenate([image_shape, image_shape])
-    return boxes
-
-
-def yolo_boxes_and_scores(feats, anchors, num_classes, input_shape, image_shape):
-    &apos;&apos;&apos;Process Conv layer output&apos;&apos;&apos;
-    # 对yolo的输出进行后处理，输出合适原始图片的box和scores
-    box_xy, box_wh, box_confidence, box_class_probs = yolo_head(
-        feats, anchors, num_classes, input_shape)
-    boxes = yolo_correct_boxes(box_xy, box_wh, input_shape, image_shape)
-    boxes = K.reshape(boxes, [-1, 4])
-    box_scores = box_confidence * box_class_probs
-    box_scores = K.reshape(box_scores, [-1, num_classes])
-    return boxes, box_scores
-
-
-def yolo_eval(yolo_outputs, anchors, num_classes, image_shape,
-              max_boxes=20, score_threshold=.6, iou_threshold=.5):
-    &quot;&quot;&quot;Evaluate YOLO model on given input and return filtered boxes.&quot;&quot;&quot;
-    # 使用yolo模型进行图片的检测，进行坐标转化，和nms处理，和
-
-    num_layers = len(yolo_outputs)
-    anchor_mask = [[6, 7, 8], [3, 4, 5], [0, 1, 2]] if num_layers == 3 else [[3, 4, 5], [1, 2, 3]]  # default setting
-    input_shape = K.shape(yolo_outputs[0])[1:3] * 32
-    boxes = []
-    box_scores = []
-    for l in range(num_layers):
-        _boxes, _box_scores = yolo_boxes_and_scores(
-            yolo_outputs[l], anchors[anchor_mask[l]], num_classes, input_shape, image_shape)
-        boxes.append(_boxes)
-        box_scores.append(_box_scores)
-    boxes = K.concatenate(boxes, axis=0)
-    box_scores = K.concatenate(box_scores, axis=0)
-
-    mask = box_scores &gt;= score_threshold
-    max_boxes_tensor = K.constant(max_boxes, dtype=&apos;int32&apos;)
-    boxes_ = []
-    scores_ = []
-    classes_ = []
-    for c in range(num_classes):
-        # 进行nms处理
-        # TODO: use keras backend instead of tf.
-        class_boxes = tf.boolean_mask(boxes, mask[:, c])
-        class_box_scores = tf.boolean_mask(box_scores[:, c], mask[:, c])
-        nms_index = tf.image.non_max_suppression(
-            class_boxes, class_box_scores, max_boxes_tensor, iou_threshold=iou_threshold)
-        class_boxes = K.gather(class_boxes, nms_index)
-        class_box_scores = K.gather(class_box_scores, nms_index)
-        classes = K.ones_like(class_box_scores, &apos;int32&apos;) * c
-        boxes_.append(class_boxes)
-        scores_.append(class_box_scores)
-        classes_.append(classes)
-    boxes_ = K.concatenate(boxes_, axis=0)
-    scores_ = K.concatenate(scores_, axis=0)
-    classes_ = K.concatenate(classes_, axis=0)
-
-    return boxes_, scores_, classes_
-
-
-def preprocess_true_boxes(true_boxes, input_shape, anchors, num_classes):
-    &apos;&apos;&apos;Preprocess true boxes to training input format
-    y_true的第0和1位是中心点xy，范围是(0~13/26/52)，第2和3位是宽高wh，范围是0~1，
-    第4位是置信度1或0，第5~n位是类别为1其余为0。
-
-
-    Parameters
-    ----------
-    true_boxes: array, shape=(m, T, 5)
-        Absolute x_min, y_min, x_max, y_max, class_id relative to input_shape.
-    input_shape: array-like, hw, multiples of 32
-    anchors: array, shape=(N, 2), wh
-    num_classes: integer
-
-    Returns
-    -------
-    y_true: list of array, shape like yolo_outputs, xywh are reletive value
-
-    &apos;&apos;&apos;
-    assert (true_boxes[..., 4] &lt; num_classes).all(), &apos;class id must be less than num_classes&apos;
-    num_layers = len(anchors) // 3  # default setting
-    anchor_mask = [[6, 7, 8], [3, 4, 5], [0, 1, 2]] if num_layers == 3 else [[3, 4, 5], [1, 2, 3]]
-    # 所有的真实标注
-    true_boxes = np.array(true_boxes, dtype=&apos;float32&apos;)
-    # 模型的输入尺寸
-    input_shape = np.array(input_shape, dtype=&apos;int32&apos;)
-    # 获取目标输入x，y
-    boxes_xy = (true_boxes[..., 0:2] + true_boxes[..., 2:4]) // 2
-    # 获取目标的w，h
-    boxes_wh = true_boxes[..., 2:4] - true_boxes[..., 0:2]
-    # 这时候坐标变为0~1
-    true_boxes[..., 0:2] = boxes_xy / input_shape[::-1]
-    true_boxes[..., 2:4] = boxes_wh / input_shape[::-1]
-    # 获取所有的这是标记的数量
-    m = true_boxes.shape[0]
-    # 得到模型每一个输出y1-y3的下采样之后的特征图片大小
-    grid_shapes = [input_shape // {0: 32, 1: 16, 2: 8}[l] for l in range(num_layers)]
-    # 获取三组y_true
-    # [(16, 13, 13, 3, 6), (16, 26, 26, 3, 6), (16, 52, 52, 3, 6)],
-    y_true = [np.zeros((m, grid_shapes[l][0], grid_shapes[l][1], len(anchor_mask[l]), 5 + num_classes),
-                       dtype=&apos;float32&apos;) for l in range(num_layers)]
-
-    # Expand dim to apply broadcasting.
-    # 9个anchors的值
-    anchors = np.expand_dims(anchors, 0)
-    anchor_maxes = anchors / 2.
-    anchor_mins = -anchor_maxes
-    valid_mask = boxes_wh[..., 0] &gt; 0
-
-    for b in range(m):
-        # Discard zero rows.
-        # 只第b个boxes选取wh大于0的anchors
-        wh = boxes_wh[b, valid_mask[b]]
-        if len(wh) == 0: continue
-        # Expand dim to apply broadcasting.
-        wh = np.expand_dims(wh, -2)
-        box_maxes = wh / 2.
-        box_mins = -box_maxes
-        # 求目标的范围，和anchors的iou值，查看目标的标记值与9个anchors哪个iou最大
-        intersect_mins = np.maximum(box_mins, anchor_mins)
-        intersect_maxes = np.minimum(box_maxes, anchor_maxes)
-        intersect_wh = np.maximum(intersect_maxes - intersect_mins, 0.)
-        intersect_area = intersect_wh[..., 0] * intersect_wh[..., 1]
-        box_area = wh[..., 0] * wh[..., 1]
-        anchor_area = anchors[..., 0] * anchors[..., 1]
-        iou = intersect_area / (box_area + anchor_area - intersect_area)
-        # 从每个iou值中，找到iou值最大的目标
-        # Find best anchor for each true box
-        # 得到9个anchos的一个值
-        best_anchor = np.argmax(iou, axis=-1)
-
-        for t, n in enumerate(best_anchor):
-            # t，n为9个最大之中的某一个
-            for l in range(num_layers):
-                # 三层y1
-                if n in anchor_mask[l]:
-                    # i就是在对应的特征图上的实际尺寸的宽，就是高
-                    i = np.floor(true_boxes[b, t, 0] * grid_shapes[l][1]).astype(&apos;int32&apos;)
-                    j = np.floor(true_boxes[b, t, 1] * grid_shapes[l][0]).astype(&apos;int32&apos;)
-                    k = anchor_mask[l].index(n)
-                    c = true_boxes[b, t, 4].astype(&apos;int32&apos;)
-                    # y_true的第0和1位是中心点xy，范围是(0~13/26/52)，
-                    # 第2和3位是宽高wh，范围是0~1，
-                    # 第4位是置信度1或0，
-                    # 第5~n位是类别为1其余为0。
-                    y_true[l][b, j, i, k, 0:4] = true_boxes[b, t, 0:4]
-                    y_true[l][b, j, i, k, 4] = 1
-                    y_true[l][b, j, i, k, 5 + c] = 1
-    # [(16, 13, 13, 3, 6), (16, 26, 26, 3, 6), (16, 52, 52, 3, 6)]
-    return y_true
-
-
-def box_iou(b1, b2):
-    &apos;&apos;&apos;Return iou tensor
-
-    Parameters
-    ----------
-    b1: tensor, shape=(i1,...,iN, 4), xywh
-    b2: tensor, shape=(j, 4), xywh
-
-    Returns
-    -------
-    iou: tensor, shape=(i1,...,iN, j)
-
-    &apos;&apos;&apos;
-
-    # Expand dim to apply broadcasting.
-    b1 = K.expand_dims(b1, -2)
-    b1_xy = b1[..., :2]
-    b1_wh = b1[..., 2:4]
-    b1_wh_half = b1_wh / 2.
-    b1_mins = b1_xy - b1_wh_half
-    b1_maxes = b1_xy + b1_wh_half
-
-    # Expand dim to apply broadcasting.
-    b2 = K.expand_dims(b2, 0)
-    b2_xy = b2[..., :2]
-    b2_wh = b2[..., 2:4]
-    b2_wh_half = b2_wh / 2.
-    b2_mins = b2_xy - b2_wh_half
-    b2_maxes = b2_xy + b2_wh_half
-
-    intersect_mins = K.maximum(b1_mins, b2_mins)
-    intersect_maxes = K.minimum(b1_maxes, b2_maxes)
-    intersect_wh = K.maximum(intersect_maxes - intersect_mins, 0.)
-    intersect_area = intersect_wh[..., 0] * intersect_wh[..., 1]
-    b1_area = b1_wh[..., 0] * b1_wh[..., 1]
-    b2_area = b2_wh[..., 0] * b2_wh[..., 1]
-    iou = intersect_area / (b1_area + b2_area - intersect_area)
-
-    return iou
-
-
-def yolo_loss(args, anchors, num_classes, ignore_thresh=.5, print_loss=True):
-    &apos;&apos;&apos;Return yolo_loss tensor
-
-    Parameters
-    ----------
-    yolo_outputs: list of tensor, the output of yolo_body or tiny_yolo_body
-    y_true: list of array, the output of preprocess_true_boxes
-    anchors: array, shape=(N, 2), wh
-    num_classes: integer
-    ignore_thresh: float, the iou threshold whether to ignore object confidence loss
-
-    Returns
-    -------
-    loss: tensor, shape=(1,)
-
-    &apos;&apos;&apos;
-    num_layers = len(anchors) // 3  # default setting
-    # 获取模型的输出，获取输入真值
-    yolo_outputs = args[:num_layers]
-    y_true = args[num_layers:]
-    anchor_mask = [[6, 7, 8], [3, 4, 5], [0, 1, 2]] if num_layers == 3 else [[3, 4, 5], [1, 2, 3]]
-    # input_shape是输出的尺寸*32, 就是原始的输入尺寸，[1:3]是尺寸的位置
-    input_shape = K.cast(K.shape(yolo_outputs[0])[1:3] * 32, K.dtype(y_true[0]))
-    # 每个网格的尺寸，
-    grid_shapes = [K.cast(K.shape(yolo_outputs[l])[1:3], K.dtype(y_true[0])) for l in range(num_layers)]
-    loss = 0
-    m = K.shape(yolo_outputs[0])[0]  # batch size, tensor
-    mf = K.cast(m, K.dtype(yolo_outputs[0]))
-    # y_true的第0和1位是中心点xy，范围是(0~13/26/52)，
-    # 第2和3位是宽高wh，范围是0~1，
-    # 第4位是置信度1或0，
-    # 第5~n位是类别为1其余为0。
-    for l in range(num_layers):
-        object_mask = y_true[l][..., 4:5] # 1
-        true_class_probs = y_true[l][..., 5:]
-        # 这是yolo_outputs的后处理程序
-        grid, raw_pred, pred_xy, pred_wh = \
-            yolo_head(yolo_outputs[l], anchors[anchor_mask[l]],
-                      num_classes, input_shape, calc_loss=True)
-        pred_box = K.concatenate([pred_xy, pred_wh])
-
-        # Darknet raw box to calculate loss.
-        # bugfix grid_shapes重复相乘，另一个在preprocess_true_boxes中
-        # 把真实的坐标转换到预测坐标系
-        raw_true_xy = y_true[l][..., :2] * grid_shapes[l][::-1] - grid
-        raw_true_wh = K.log(y_true[l][..., 2:4] / anchors[anchor_mask[l]] * input_shape[::-1])  # 1
-        raw_true_wh = K.switch(object_mask, raw_true_wh, K.zeros_like(raw_true_wh))  # avoid log(0)=-inf
-        box_loss_scale = 2 - y_true[l][..., 2:3] * y_true[l][..., 3:4]  # 2-w*h
-
-        # Find ignore mask, iterate over each of batch.
-        ignore_mask = tf.TensorArray(K.dtype(y_true[0]), size=1, dynamic_size=True)
-        object_mask_bool = K.cast(object_mask, &apos;bool&apos;)
-
-        def loop_body(b, ignore_mask):
-            true_box = tf.boolean_mask(y_true[l][b, ..., 0:4], object_mask_bool[b, ..., 0])
-            iou = box_iou(pred_box[b], true_box)
-            best_iou = K.max(iou, axis=-1)
-            ignore_mask = ignore_mask.write(b, K.cast(best_iou &lt; ignore_thresh, K.dtype(true_box)))
-            return b + 1, ignore_mask
-
-        _, ignore_mask = K.control_flow_ops.while_loop(lambda b, *args: b &lt; m, loop_body, [0, ignore_mask])
-        ignore_mask = ignore_mask.stack()
-        ignore_mask = K.expand_dims(ignore_mask, -1)
-
-        # K.binary_crossentropy is helpful to avoid exp overflow.
-        xy_loss = object_mask * box_loss_scale * K.binary_crossentropy(raw_true_xy, raw_pred[..., 0:2],
-                                                                       from_logits=True)
-        wh_loss = object_mask * box_loss_scale * 0.5 * K.square(raw_true_wh - raw_pred[..., 2:4])
-        confidence_loss = object_mask * K.binary_crossentropy(object_mask, raw_pred[..., 4:5], from_logits=True) + \
-                          (1 - object_mask) * K.binary_crossentropy(object_mask, raw_pred[..., 4:5],
-                                                                    from_logits=True) * ignore_mask
-        class_loss = object_mask * K.binary_crossentropy(true_class_probs, raw_pred[..., 5:], from_logits=True)
-
-        xy_loss = K.sum(xy_loss) / mf
-        wh_loss = K.sum(wh_loss) / mf
-        confidence_loss = K.sum(confidence_loss) / mf
-        class_loss = K.sum(class_loss) / mf
-        loss += xy_loss + wh_loss + confidence_loss + class_loss
-        if print_loss:
-            loss = tf.Print(loss, [loss, xy_loss, wh_loss, confidence_loss, class_loss, K.sum(ignore_mask)],
-                            message=&apos;loss: &apos;)
-    return loss
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
+        <h2 id="model-py是Keras主要是定义了yolov3的结构和loss函数。"><a href="#model-py是Keras主要是定义了yolov3的结构和loss函数。" class="headerlink" title="model.py是Keras主要是定义了yolov3的结构和loss函数。"></a>model.py是Keras主要是定义了yolov3的结构和loss函数。</h2><p>卷积层定义函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def DarknetConv2D(*args, **kwargs):     </span><br><span class="line">    &quot;&quot;&quot;Wrapper to set Darknet parameters for Convolution2D.&quot;&quot;&quot;</span><br><span class="line">    darknet_conv_kwargs = &#123;&apos;kernel_regularizer&apos;: l2(5e-4)&#125;</span><br><span class="line">    darknet_conv_kwargs[&apos;padding&apos;] = &apos;valid&apos; if kwargs.get(&apos;strides&apos;)==(2,2) else &apos;same&apos;</span><br><span class="line">    darknet_conv_kwargs.update(kwargs)</span><br><span class="line">    return Conv2D(*args, **darknet_conv_kwargs)</span><br></pre></td></tr></table></figure>
+        
       
 
       
