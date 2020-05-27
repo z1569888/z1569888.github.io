@@ -6,14 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>YOLOv4论文导读 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey Bochkovskiy。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="YOLOv4论文导读">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey Bochkovskiy。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;%E4%BD%9C%E8%80%85.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;%E6%80%A7%E8%83%BD.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;%E7%BB%93%E6%9E%84.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;CSPnet.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;SPP.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;PAN.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;cutmix.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;mosaic1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;Mosaic2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;COIU%E5%9B%BE.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;CIOU1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;CIOU4.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;CIOU3.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;CIOU4.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;Mish%E5%87%BD%E6%95%B0.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;Mish%E5%9B%BE.jpg">
+<meta property="og:updated_time" content="2020-05-27T14:54:04.782Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;26&#x2F;YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB&#x2F;%E4%BD%9C%E8%80%85.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -157,248 +177,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-YOLOv4论文导读" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/" class="archive-article-date">
-  	<time datetime="2020-05-26T03:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/">用QT设计一个检测GUI</a>
+    <h1 class="article-title" itemprop="name">
+      YOLOv4论文导读
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/" class="archive-article-date">
+        
+        <a href="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/" class="archive-article-date">
   	<time datetime="2020-04-26T14:54:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/">YOLOv4论文导读</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
+        <h3 id="就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph-Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey-Bochkovskiy。"><a href="#就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph-Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey-Bochkovskiy。" class="headerlink" title="就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey Bochkovskiy。"></a>就在刚才，YOLOv4宣布发布啦！！！！这真的是一个突然的惊喜，因为早在2月份，Jeseph Redmon就宣布因为YOLO带来的负面影响而宣布退出CV届，本以为YOLOv3就是YOLO的终点，然而现在YOLO有了一个新的接班人：Alexey Bochkovskiy。</h3><p><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/%E4%BD%9C%E8%80%85.jpg" alt></p>
+<a id="more"></a>
+<h3 id="熟悉YOLO的人可能都听过这个名字，他正是在Github上不断更新YOLOv3的AB大神，对YOLOv3的更新作出了许许多多的贡献。也就在昨天，YOLO的原作者正式在Github上更新了YOLOv4，也将AB大神扶上了正位，让我们对YOLOv4具体了解一下吧。"><a href="#熟悉YOLO的人可能都听过这个名字，他正是在Github上不断更新YOLOv3的AB大神，对YOLOv3的更新作出了许许多多的贡献。也就在昨天，YOLO的原作者正式在Github上更新了YOLOv4，也将AB大神扶上了正位，让我们对YOLOv4具体了解一下吧。" class="headerlink" title="熟悉YOLO的人可能都听过这个名字，他正是在Github上不断更新YOLOv3的AB大神，对YOLOv3的更新作出了许许多多的贡献。也就在昨天，YOLO的原作者正式在Github上更新了YOLOv4，也将AB大神扶上了正位，让我们对YOLOv4具体了解一下吧。"></a>熟悉YOLO的人可能都听过这个名字，他正是在Github上不断更新YOLOv3的AB大神，对YOLOv3的更新作出了许许多多的贡献。也就在昨天，YOLO的原作者正式在Github上更新了YOLOv4，也将AB大神扶上了正位，让我们对YOLOv4具体了解一下吧。</h3><h3 id="对于YOLOv4，我们最为关心的莫不过是他的性能如何了，下图为YOLOv4和几个性能强大的检测算法对比图。"><a href="#对于YOLOv4，我们最为关心的莫不过是他的性能如何了，下图为YOLOv4和几个性能强大的检测算法对比图。" class="headerlink" title="对于YOLOv4，我们最为关心的莫不过是他的性能如何了，下图为YOLOv4和几个性能强大的检测算法对比图。"></a>对于YOLOv4，我们最为关心的莫不过是他的性能如何了，下图为YOLOv4和几个性能强大的检测算法对比图。</h3><p><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/%E6%80%A7%E8%83%BD.jpg" alt><br>可以看出最新的目标检测算法Efficient和YOLOv4在同等AP的情况下，检测速度几乎是YOLOv4的一半。和YOLOv3进行横向对比，AP和FPS分别提高了10%和12%，可以看出YOLOv4是非常强大的。那么YOLOv4为何提升如此明显呢？其实YOLOv4并没有什么创新之处，就是把最近较为优秀的trick融合在了YOLOv3上，并且做了大量的实验，下面让我们具体来看看融合了哪些优秀的trick吧。</p>
+<hr>
+<h1 id="YOLOv4改进部分"><a href="#YOLOv4改进部分" class="headerlink" title="YOLOv4改进部分"></a>YOLOv4改进部分</h1><p>1、特征提取网络：Darknet53-&gt;CSPDarknet53。<br>2、特征金字塔：SPP，PAN。<br>3、训练时候用到的技巧：Mosaic增强、Label Smoothing平滑、CIOU。<br>4、激活函数：Relu-&gt;Mish。<br>以上并没有将YOLOv4的全部改动写出，而是部分，因为YOLOv4的改动太多了，这里只是我目前为止能够理解的改动。</p>
+<hr>
+<h1 id="YOLOv4结构"><a href="#YOLOv4结构" class="headerlink" title="YOLOv4结构"></a>YOLOv4结构</h1><p>下图是YOLOv4的网络结构图：<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/%E7%BB%93%E6%9E%84.jpg" alt><br>对于网络结构改进主要就是有三个：1、Darknet53-&gt;CSPDarknet53；2、加入SPP；3、加入PAN。</p>
+<h2 id="1、主干网络"><a href="#1、主干网络" class="headerlink" title="1、主干网络"></a>1、主干网络</h2><p>YOLOv4的主干网络是CSPDarknet53，也就是Darkent和CSPnet的结合，CSPnet的结构其实很简单，就是将残差块拆成了左右两部分，一部分和原来的残差块一样，另外一部分则是经过卷积等处理直接连到最后,如下图所示：<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/CSPnet.jpg" alt></p>
+<h2 id="2、特征金字塔"><a href="#2、特征金字塔" class="headerlink" title="2、特征金字塔"></a>2、特征金字塔</h2><p>关于特征金字塔，YOLOv4主要使用了两个trick：<br>a)使用了SPP结构<br>b)使用了PANet结构<br>spp结构是在CSPDarknet后面的连接层，对CSPDarknet的最后一个特征层进行三次不同尺度的池化操作后在进行concat操作，池化核的大小分别是13x13、9x9、5x5。经过SPP可以增加感受野。<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/SPP.jpg" alt><br>PANet结构则是代替了FPN结构，能够提取更多的特征，能看出在FPN结构的右边增加了一个从下向上的结构。<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/PAN.jpg" alt></p>
+<h2 id="3、Mosaic增强"><a href="#3、Mosaic增强" class="headerlink" title="3、Mosaic增强"></a>3、Mosaic增强</h2><p>YOLOv4的mosaic增强参考了CutMix和MixUp，CutMix是用两张图拼接的方式进行增强<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/cutmix.jpg" alt><br>而Mosaic则是利用了4张图，这样可以增大鲁棒性，并且一下就训练了4张图，减小电脑对bath-size的要求<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/mosaic1.jpg" alt>            <img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/Mosaic2.jpg" alt></p>
+<h2 id="4、Label-Smoothing"><a href="#4、Label-Smoothing" class="headerlink" title="4、Label Smoothing"></a>4、Label Smoothing</h2><p>Label Smoothing就是将标签进行一个平滑化。在往常打标签通常不是0就是1，这样让对象太绝对化了，标签也是人为打的并不是绝对绝对绝对对的，平滑后标签就变成了可以像0.005和0.995这样，相当于加了一点惩罚。公式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new_onehot_labels = onehot_labels * (1 - label_smoothing) + label_smoothing / num_classes</span><br></pre></td></tr></table></figure>
+
+<h2 id="5、CIoU"><a href="#5、CIoU" class="headerlink" title="5、CIoU"></a>5、CIoU</h2><p>IoU是目标检测中常用的一个算法，进行重叠度的计算。但是IoU有许多的缺点比如并不能表达出方框的位置信息，于是有人想出对IoU的优化，提出了例如GIoU、DIoU和CIoU的改进方法，其中CIoU是较为优秀的一种算法。<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/COIU%E5%9B%BE.jpg" alt><br>CIOU将目标与anchor之间的距离，重叠率、尺度以及惩罚项都考虑进去，使得目标框回归变得更加稳定，不会像IoU和GIoU一样出现训练过程中发散等问题。而惩罚因子把预测框长宽和比拟合目标框的长宽比考虑进去，公式如下：<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/CIOU1.jpg" alt><br>其中，ρ2(b,bgt)ρ2(b,bgt)分别代表了预测框和真实框的中心点的欧式距离。 c代表的是能够同时包含预测框和真实框的最小闭包区域的对角线距离。<br>而α和v的公式如下<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/CIOU4.jpg" alt><br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/CIOU3.jpg" alt><br>把1-CIOU就可以得到相应的LOSS了。<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/CIOU4.jpg" alt></p>
+<h2 id="6、Mish激活函数"><a href="#6、Mish激活函数" class="headerlink" title="6、Mish激活函数"></a>6、Mish激活函数</h2><p>在YOLOv3中所有的激活函数都是ReLu，其实对于ReLu的变种有很多，比如LRelu, PReLU, SELU，ReLu6, Swish, hard-Swish Mish。同样Mish也是通过实验后得出较为优秀的激活函数，经实验证明Mish在训练稳定性、平均准确率、峰值准确率等方面都有较高的数值，Mish的公式和图像如下：<br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/Mish%E5%87%BD%E6%95%B0.jpg" alt><br><img src="/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/Mish%E5%9B%BE.jpg" alt></p>
+<hr>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>自己在读完YOLOv4这篇文章后，给人最深刻的印象就是YOLOv4的Bag of freebies和Bag of specials，很多人都认识YOLOv4就像一个缝合怪没有创新点，但是AB大神并没有把精力集中在创新之上，而是在于如何运用这些trick，把它们融合在YOLO上，做了大量大量的实验，没有功劳也有苦劳，让YOLO能走的更远，他也配的上YOLOv4作者这个名字。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/二维码.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/微信二维码.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/" class="archive-article-date">
-  	<time datetime="2019-12-31T14:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/">用三菱FX3U和威纶通触摸屏通讯走过的坑</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/YOLOv4%E8%AE%BA%E6%96%87%E5%AF%BC%E8%AF%BB/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/" class="archive-article-date">
-  	<time datetime="2019-12-14T13:29:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-14</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/05/26/%E7%94%A8QT%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E6%A3%80%E6%B5%8BGUI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          用QT设计一个检测GUI
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/31/%E7%94%A8%E4%B8%89%E8%8F%B1FX3U%E5%92%8C%E5%A8%81%E7%BA%B6%E9%80%9A%E8%A7%A6%E6%91%B8%E5%B1%8F%E9%80%9A%E8%AE%AF%E8%B5%B0%E8%BF%87%E7%9A%84%E5%9D%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用三菱FX3U和威纶通触摸屏通讯走过的坑</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/14/c-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/">c++拷贝构造函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/" class="archive-article-date">
-  	<time datetime="2019-11-26T11:31:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/26/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-utils-py/">yolov3-keras代码详解-utils-py</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/26/keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-model-py/" class="archive-article-date">
-  	<time datetime="2019-11-26T08:57:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/26/keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-model-py/">keras代码详解-model-py</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/" class="archive-article-date">
-  	<time datetime="2019-11-22T13:48:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/22/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-train-py/">yolov3-keras代码详解-train-py</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/" class="archive-article-date">
-  	<time datetime="2019-08-21T12:05:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/21/yolov3-keras%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3-voc-annotatation-py/">yolov3-keras代码详解-voc-annotatation-py</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -421,8 +384,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
